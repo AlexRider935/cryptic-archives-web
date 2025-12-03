@@ -20,5 +20,65 @@
 /* 4. Apply base styles to the body */
 body {
   background-color: var(--background);
-  color: var(--foreground);
+  
+  /* 1. THE "INK" COLOR: A dark, rich brown instead of a harsh black. */
+  color: #28211C; 
+  
+  /* 2. THE "INK BLEED" EFFECT: A tiny, soft shadow to blur the edges. */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* 3. FONT SMOOTHING: A small tweak for better rendering on some screens. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 4. (Optional but powerful) BLEND MODE: Makes the text interact with the paper texture. */
+  /* Try uncommenting this line to see the effect. It can be very dramatic. */
+  mix-blend-mode: multiply;
+}
+.paper-background {
+  background-color: #f3dfc1; /* Fallback color */
+  background-image: url('/paper-texture.png');
+  background-repeat: repeat; /* This tiles the texture */
+}
+/* --- ADD these NEW classes --- */
+.leather-folio-bg {
+  background-color: #211a13; /* Dark brown fallback */
+  background-image: url('/leather-texture.png');
+  background-repeat: repeat;
+}
+
+.manila-folder-bg {
+  background-color: #c7a67d; /* Manila fallback */
+  background-image: url('/manila-texture.png');
+  background-repeat: repeat;
+}
+
+
+/* --- DYNAMIC CUSTOM CURSOR STYLES --- */
+
+/* 1. Hide the default cursor everywhere */
+* {
+  cursor: none;
+}
+
+/* 2. Style our custom cursor element */
+#custom-cursor {
+  position: fixed; /* It needs to float over everything */
+  z-index: 9999;
+  width: 32px; /* The size of our cursor image */
+  height: 32px;
+  
+  /* This is CRITICAL: it allows clicks to pass "through" the cursor to elements below */
+  pointer-events: none; 
+  
+  /* Start with the default state (no rotation/scale) */
+  transform: translate(-50%, -50%); /* Center the image on the pointer */
+  
+  /* Smoothly animate any changes to the transform */
+  transition: transform 0.1s ease-out; 
+}
+
+/* 3. This is the "active investigation" state */
+#custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.2) rotate(-15deg);
 }

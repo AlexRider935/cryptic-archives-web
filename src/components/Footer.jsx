@@ -19,22 +19,25 @@ export default function Footer() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center text-gray-700 hover:text-black transition-colors group">
+      className="font-sans flex items-center text-gray-700 hover:text-black transition-colors group">
       <Icon className="w-4 h-4 mr-3 text-gray-500 group-hover:text-black" />
       <span>{label}</span>
     </a>
   );
 
   return (
-    <footer className="bg-[#f3dfc1] border-t-2 border-black/10 text-gray-800 font-serif">
+    // The main font is now inherited from the body (font-sans / Libre Baskerville)
+    <footer className="bg-[#f3dfc1] border-t-2 border-black/10 text-gray-800">
       <div className="container mx-auto px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1: Brand & Motto */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h2 className="text-2xl font-bold tracking-tighter text-black">
+            {/* Heading uses font-serif (Playfair Display) */}
+            <h2 className="font-serif text-2xl font-bold tracking-tighter text-black">
               Cryptic Archives
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-gray-700 italic">
+            {/* Paragraph uses font-sans (Libre Baskerville) */}
+            <p className="font-sans mt-4 text-sm leading-relaxed text-gray-700 italic">
               “The world is full of obvious things which nobody by any chance
               ever observes.”
             </p>
@@ -42,10 +45,10 @@ export default function Footer() {
 
           {/* Column 2: Navigation */}
           <div>
-            <h3 className="text-lg font-bold text-black tracking-wide">
+            <h3 className="font-serif text-lg font-bold text-black tracking-wide">
               Explore the Agency
             </h3>
-            <ul className="mt-4 space-y-3 text-sm">
+            <ul className="font-sans mt-4 space-y-3 text-sm">
               <li>
                 <Link
                   href="/cases"
@@ -75,7 +78,7 @@ export default function Footer() {
 
           {/* Column 3: Social & Community */}
           <div>
-            <h3 className="text-lg font-bold text-black tracking-wide">
+            <h3 className="font-serif text-lg font-bold text-black tracking-wide">
               Follow the Clues
             </h3>
             <div className="mt-4 space-y-3 text-sm">
@@ -86,10 +89,10 @@ export default function Footer() {
 
           {/* Column 4: Newsletter CTA */}
           <div>
-            <h3 className="text-lg font-bold text-black tracking-wide">
+            <h3 className="font-serif text-lg font-bold text-black tracking-wide">
               Mysterious Correspondence
             </h3>
-            <p className="mt-4 text-sm text-gray-700">
+            <p className="font-sans mt-4 text-sm text-gray-700">
               Receive new case files and cryptic messages delivered directly by
               post.
             </p>
@@ -112,7 +115,7 @@ export default function Footer() {
 
       {/* Bottom Copyright Bar */}
       <div className="border-t border-black/10">
-        <p className="container mx-auto text-center text-xs text-gray-600 py-4 tracking-wider">
+        <p className="font-sans container mx-auto text-center text-xs text-gray-600 py-4 tracking-wider">
           &copy; {currentYear} Cryptic Archives & Co. | Purveyors of Fine
           Mysteries, London.
         </p>

@@ -4,16 +4,14 @@ import {
   Special_Elite,
 } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { CustomCursor } from "@/components/CustomCursor";
 
-// 1. Import and configure the desired fonts
+// --- Font setup remains unchanged ---
 const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-playfair-display",
 });
-
 const libreBaskerville = Libre_Baskerville({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -21,8 +19,6 @@ const libreBaskerville = Libre_Baskerville({
   display: "swap",
   variable: "--font-libre-baskerville",
 });
-
-// This font can be kept for any remaining "dossier" style elements
 const specialElite = Special_Elite({
   weight: "400",
   subsets: ["latin"],
@@ -35,20 +31,18 @@ export const metadata = {
   description: "Unsolve the mysteries that lie within the archives.",
 };
 
+// CORRECTED ROOT LAYOUT
+// It no longer imports or renders the Header and Footer.
+// It only provides the global HTML structure.
 export default function RootLayout({ children }) {
   return (
-    // 2. Attach the font variables to the <html> element
     <html
       lang="en"
-      className={`${playfair.variable} ${libreBaskerville.variable} ${specialElite.variable}`}>
-      {/*
-        3. Apply the default font class to the body.
-        Our CSS will make `font-sans` use Libre Baskerville.
-      */}
+      className={`${playfair.variable} ${libreBaskerville.variable} ${specialElite.variable}`}
+    >
       <body className="bg-[#f3dfc1] text-gray-800 font-sans">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <CustomCursor/>
+        {children}
       </body>
     </html>
   );
